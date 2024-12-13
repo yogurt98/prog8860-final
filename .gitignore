@@ -1,0 +1,39 @@
+# Terraform State and Configuration
+*.tfstate
+*.tfstate.backup
+.terraform/
+.terraform.lock.hcl
+
+# Python Virtual Environment
+venv/
+env/
+
+# Compiled Python Files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Logs
+*.log
+
+# IDE Configuration Files
+.vscode/
+.idea/
+
+# System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Large Files and Temporary Files
+*.zip
+*.tar.gz
+*.bak
+
+# Specific Large Terraform Provider Files
+terraform/.terraform/providers/
+terraform/.terraform/
+
+# AWS Credentials (if any)
+*.pem
+*.key

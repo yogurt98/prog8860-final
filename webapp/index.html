@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Simple WebApp</title>
+</head>
+
+<body>
+    <h1>Welcome to the Simple WebApp</h1>
+    <button onclick="fetchMessage()">Click me</button>
+    <p id="message"></p>
+
+    <script>
+        async function fetchMessage() {
+            const response = await fetch('/api');
+            const data = await response.json();
+            document.getElementById('message').textContent = data.message;
+        }
+    </script>
+</body>
+
+</html>
