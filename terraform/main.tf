@@ -73,7 +73,7 @@ resource "aws_lambda_function" "backend_function" {
   runtime       = "python3.9" # Specify the runtime for your Lambda function
   handler       = "app.lambda_handler" # Specify the handler (Python file and function name)
   role          = aws_iam_role.lambda_exec_role.arn # Refer to the IAM role for Lambda
-  filename      = "${path.module}/../webapp/lambda_function.zip"
+  filename      = "${path.module}/lambda_function.zip"
 
-  source_code_hash = filebase64sha256("${path.module}/../webapp/lambda_function.zip")
+  source_code_hash = filebase64sha256("${path.module}/lambda_function.zip")
 }
