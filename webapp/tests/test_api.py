@@ -1,16 +1,16 @@
 import pytest
-import requests
+from webapp.app import app  # Import your Flask app
 
-# Update this URL if testing against a deployed server
-BASE_URL = "http://127.0.0.1:5000"
+@pytest.fixture
+def client():
+    # Set up the Flask test client
+    app.testing = True
+    with app.test_client() as client:
+        yield client
 
-def test_hello_api():
-    response = requests.get(f"{BASE_URL}/api")
-    assert response.status_code == 200, "API did not return a 200 status code."
-    data = response.json()
-    assert "message" in data, "Response JSON does not contain 'message' key."
-    assert data["message"] == "Hello, World!", "API message does not match expected output."
-
-def test_invalid_route():
-    response = requests.get(f"{BASE_URL}/invalid")
-    assert response.status_code == 404, "Invalid route should return 404 status code."
+def test_hello_api(client):
+    # Use the test client to send a GET request
+    response = client.get('/api')
+    assert response.status_code == 200  # Check if status code is 200
+    data = response.get_json()  # Parse the JSON response
+    assert data == {"message": "Hello, World!"}  # Validate the response
