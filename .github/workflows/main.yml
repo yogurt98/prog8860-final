@@ -22,7 +22,11 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r webapp/requirements.txt
+          pip install pytest
+
       - name: Run API Tests
+        env:
+          PYTHONPATH: ${{ github.workspace }}
         run: pytest webapp/tests/test_api.py
 
   deploy:
