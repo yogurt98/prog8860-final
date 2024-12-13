@@ -26,7 +26,6 @@ Thumbs.db
 desktop.ini
 
 # Large Files and Temporary Files
-*.zip
 *.tar.gz
 *.bak
 
