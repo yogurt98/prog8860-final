@@ -1,5 +1,6 @@
 from flask import Flask, jsonify
 from werkzeug.middleware.proxy_fix import ProxyFix
+from awslambdaric.wsgi import WSGIAdapter
 
 app = Flask(__name__)
 
@@ -9,7 +10,6 @@ def hello_api():
 
 # For Lambda: Add WSGI compatibility
 def lambda_handler(event, context):
-    from awslambdaric.wsgi import WSGIAdapter
     return WSGIAdapter(app)(event, context)
 
 if __name__ == '__main__':
